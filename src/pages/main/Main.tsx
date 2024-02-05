@@ -1,16 +1,18 @@
 import React from 'react';
-import MainHeader from "../../components/MainHeader/MainHeader";
+import HeaderTop from "../../components/MainHeader/MainHeader";
+import SubHeader from "../../components/SubHeader/SubHeader";
 
 const Main = () => (
-    <>
-        <MainHeader />
+    <div>
+        <HeaderTop />
+        <SubHeader />
         <main>Content</main>
         <section>Advertising</section>
         <footer>
             <nav>Email</nav>
             <p>Contact</p>
         </footer>
-    </>
+    </div>
 );
 
 export default Main;
