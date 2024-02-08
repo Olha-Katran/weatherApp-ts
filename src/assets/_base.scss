@@ -1,14 +1,16 @@
 // Variables for the theme colors and fonts used in this project
 
-$font-family-primary: 'Roboto', sans-serif;
+$font-family-primary: 'Roboto', sans-serif; //check
 
 $text-color-black:  hsl(0, 0%, 0%);
 $text-color-white: hsla(0, 0%, 100%, .8);
-$text-color-dark: hsl(0, 0%, 26%);
-$text-color-accent: hsla(217, 91%, 59%, 1);
+$text-color-dark: #1c2130; // check
+$text-color-accent: hsla(217, 91%, 59%, 1); // check
+$text-color-secondary: #ff5c00; // check
+$text-color-grey-date: #7f8fac; // check
 
 $color-bg-light-primary: hsl(0, 0%, 100%);
-$color-bg-dark-accent: hsla(218, 45%, 10%, 1);
+$color-bg-dark-accent: hsla(218, 45%, 10%, 1); // check
 $color-bg-light-secondary: #f2f2f7;
 // TODO: виправити кольори для фону
 
@@ -23,7 +25,7 @@ $padding-small: 7px;
 $padding-medium: 15px;
 $padding-big: 40px;
 
-$margin-small: 7px;
+$margin-small: 8px;
 $margin-medium: 15px;
 $margin-big: 40px;
 

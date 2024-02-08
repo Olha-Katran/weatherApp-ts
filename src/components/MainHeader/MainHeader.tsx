@@ -1,3 +1,4 @@
+import {t} from "i18next";
 import React from 'react';
 import {Link} from "react-router-dom";
 import { ReactComponent as LogoIcon } from '../../assets/header/header-logo-icon.svg';
@@ -14,7 +15,7 @@ const HeaderTop = () => {
             </button>
             <Link to='/' className={styles.logo}>
                 <LogoIcon />
-                <a href={'/ua'} className={styles.title}>Погода</a>
+                <a href={'/ua'} className={styles.title}>{t('home.title')}</a>
             </Link>
             <div className={styles.search_active}>
                 <div className={styles.search_wrap}>
