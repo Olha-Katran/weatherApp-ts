@@ -1,5 +1,6 @@
 import React from 'react';
 import WeatherTableMonthDate from "../WeatherTableMonthDate/WeatherTableMonthDate";
+import WeatherTableMonthWeather from "../WeatherTableMonthWeather/WeatherTableMonthWeather";
 import styles from './WeatherTable.module.scss';
 
 interface Data  {
@@ -79,22 +80,32 @@ const WeatherTable = () => {
             <div className={styles.month_wrap}>
                 <div className={styles.month_week}>
                     {weatherData.map(item => (
-                        <WeatherTableMonthDate
-                            key={item.id}
-                            dayOfWeek={item.dayOfWeek}
-                            date={item.date}
-                            accent={item.accent}
-                        />
+                        <div key={item.id} className={styles.data}>
+                            <WeatherTableMonthDate
+                                dayOfWeek={item.dayOfWeek}
+                                date={item.date}
+                                accent={item.accent}
+                            />
+                            <WeatherTableMonthWeather
+                                maxDegree={item.maxDegree}
+                                minDegree={item.minDegree}
+                            />
+                        </div>
                     ))}
                 </div>
                 <div className={styles.month_week}>
                     {weatherData.map(item => (
-                        <WeatherTableMonthDate
-                            key={item.id}
-                            dayOfWeek={item.dayOfWeek}
-                            date={item.date}
-                            accent={item.accent}
-                        />
+                        <div key={item.id} className={styles.data}>
+                            <WeatherTableMonthDate
+                                dayOfWeek={item.dayOfWeek}
+                                date={item.date}
+                                accent={item.accent}
+                            />
+                            <WeatherTableMonthWeather
+                                maxDegree={item.maxDegree}
+                                minDegree={item.minDegree}
+                            />
+                        </div>
                     ))}
                 </div>
             </div>
