@@ -4,18 +4,19 @@ import {Link} from "react-router-dom";
 import { ReactComponent as LogoIcon } from '../../assets/header/header-logo-icon.svg';
 import { ReactComponent as SearchIcon } from '../../assets/header/search-icon.svg';
 import { ReactComponent as SearchHideIcon } from '../../assets/header/header-search-arrow-hide-icon.svg';
-import { ReactComponent as MenuIcon } from "../../assets/header/open-menu-icon.svg";
+import MenuHamburger from "../MenuHamburger/MenuHamburger";
 import styles from './Header.module.scss';
+import Logo from "../../shared/Logo/Logo";
 
 const HeaderTop = () => {
     return (
         <header className={styles.container}>
-            <button className={styles.open_menu}>
-                <MenuIcon />
-            </button>
+            {/*<button className={styles.open_menu}>*/}
+            {/*    <MenuIcon />*/}
+            {/*</button>*/}
+            <MenuHamburger />
             <Link to='/' className={styles.logo}>
-                <LogoIcon />
-                <a href={'/ua'} className={styles.title}>{t('home.title')}</a>
+               <Logo />
             </Link>
             <div className={styles.search_active}>
                 <div className={styles.search_wrap}>
