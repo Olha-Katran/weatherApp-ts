@@ -1,37 +1,28 @@
 @use '../../assets/base';
 
-.header_days {
-  min-height: 38px;
-  overflow-x: auto;
-  padding-left: 24px;
-  padding-top: 6px;
+.container {
+  background-image: url("../../assets/header/background.jpg");
   color: base.$text-color-white;
-  background-color: base.$color-bg-dark-accent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 10px 0;
+  .header_days {
+    min-height: 38px;
+    overflow-x: auto;
+    padding-top: 6px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    margin: 0;
 
-  &::-webkit-scrollbar {
-    width: 0.5em;
-    height: 1px;
-  }
+    &::-webkit-scrollbar {
+      width: 0.5em;
+      height: 1px;
+    }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-  }
-   ul {
-     padding-left: 0;
-     display: flex;
-     align-items: center;
-     margin: 0;
-   }
-  li {
-    list-style-type: none;
-    display: inline-block;
-    margin: 0 28px 0 0;
-    font-size: 16px;
-    font-weight: 500;
-    white-space: nowrap;
-    line-height: 20px;
-    padding-bottom: 12px;
-    position: relative;
-    text-transform: capitalize;
+    &::-webkit-scrollbar-thumb {
+      background-color: transparent;
+    }
   }
 }

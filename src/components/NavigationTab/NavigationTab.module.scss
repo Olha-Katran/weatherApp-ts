@@ -1,0 +1,19 @@
+@use '../../assets/base';
+
+.navigation_tab {
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 20px;
+  position: relative;
+  text-transform: capitalize;
+  display: inline-block;
+  margin: 0 28px 0 0;
+  color: base.$text-color-white;
+
+}
+.active_tab {
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 3px;
+}
