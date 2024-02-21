@@ -1,12 +1,6 @@
-import React from 'react';
-import Main from "./pages/main/Main";
+import {RouterProvider} from "react-router-dom";
+import BrowserRouter from "./router/BrowserRouter";
 
-function App() {
-  return (
-    <div className="App">
-      <Main />
-    </div>
-  );
-}
+const App = () => <RouterProvider router={BrowserRouter} />
 
 export default App;

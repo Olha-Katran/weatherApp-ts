@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import React, {useMemo} from 'react';
 import styles from './AppNavigation.module.scss';
 import {AppNavigationItem} from "../../types/AppNavigationItem";

@@ -47,6 +47,7 @@ const WeatherFooter = () => {
             <nav className={styles.footer_list}>
                 {footerTabs.map(({ text, linkTo, matchToLinkEnd }) => (
                     <NavLink
+                        key={text}
                         to={linkTo}
                         end={matchToLinkEnd}
                     >
