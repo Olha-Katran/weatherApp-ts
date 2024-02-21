@@ -3,6 +3,7 @@ import HeaderTop from "../../components/MainHeader/MainHeader";
 import SubHeader from "../../components/SubHeader/SubHeader";
 import AppNavigation from "../../components/AppNavigation/AppNavigation";
 import WeatherTable from "../../components/WeatherTable/WeatherTable";
+import WeatherFooter from "../../components/WeatherFooter/WeatherFooter";
 
 const Main = () => (
     <div>
@@ -11,11 +12,8 @@ const Main = () => (
         <main>
             <WeatherTable />
         </main>
-        <footer>
-            <nav>Email</nav>
-            <p>Contact</p>
-            <AppNavigation />
-        </footer>
+        <WeatherFooter />
+        <AppNavigation />
     </div>
 );
 
