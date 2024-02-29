@@ -2,11 +2,12 @@ import React, {useMemo, useState} from 'react';
 import {Link} from "react-router-dom";
 import {
     AiOutlineClose,
-    AiOutlineHome,
+    AiOutlineHome, AiOutlineTransaction,
 } from "react-icons/ai";
 import {FaBars} from "react-icons/fa6";
 import {AppNavigationItem} from "../../types/AppNavigationItem";
 import styles from './MenuHamburger.module.scss';
+import LanguageSwitcher from "../LanguageSwither/LanguageSwither";
 
 type Props = {
     menuLight?: boolean;
@@ -22,20 +23,20 @@ const MenuHamburger:React.FC<Props> = ({ menuLight }) => {
     const sidebarData: AppNavigationItem[] = useMemo(
         () => [
             {
-                linkTo: '/',
-                text: 'home',
+                linkTo: '/cities',
+                text: 'Погода в Україні',
                 matchToLinkEnd: false,
                 Icon: AiOutlineHome,
                 mobileOnly: true,
             },
             {
-                linkTo: '/',
-                text: 'today',
+                linkTo: '/world',
+                text: 'Погода в світі',
                 matchToLinkEnd: false,
                 Icon: AiOutlineHome,
                 mobileOnly: true,
             }, {
-                linkTo: '/',
+                linkTo: '/lang',
                 text: 'store',
                 matchToLinkEnd: false,
                 Icon: AiOutlineHome,
@@ -79,6 +80,10 @@ const MenuHamburger:React.FC<Props> = ({ menuLight }) => {
                                 </li>
                             )
                         )}
+                        <li>
+                            <AiOutlineTransaction className={styles.menu_icon} />
+                            <LanguageSwitcher language={} handleLanguageSelect={}
+                        </li>
                     </ul>
                 </nav>
             </div>

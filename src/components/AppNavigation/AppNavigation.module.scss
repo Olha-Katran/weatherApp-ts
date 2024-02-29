@@ -13,7 +13,7 @@
       text-decoration: none;
       div {
         height: 37px;
-        font-size: 0.625rem;
+        font-size: 0.7rem;
         font-weight: 400;
         font-family: base.$font-family-primary;
         color: black;
@@ -138,7 +138,8 @@
           grid-template-rows: auto 3px;
           font-size: 1.1rem;
           .activeTab {
-            @include base.gradient_text(base.$gradient-bg-light);
+            color: red;
+            background-color: red;
           }
           svg {
             grid-column: 3/4;

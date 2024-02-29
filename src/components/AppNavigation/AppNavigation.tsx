@@ -1,18 +1,34 @@
 import React, {useMemo} from 'react';
-import styles from './AppNavigation.module.scss';
-import {AppNavigationItem} from "../../types/AppNavigationItem";
-import AppNavigationTodayIcon from "../AppNavigationTodayIcon/AppNavigationTodayIcon";
 import {NavLink} from "react-router-dom";
+import {AppNavigationItem} from "../../types/AppNavigationItem";
+import BROWSER_ROUTES from "../../router/routes";
+import AppNavigationTodayIcon from "../AppNavigationIcon/AppNavigationTodayIcon";
+import AppNavigationTomorrowIcon from "../AppNavigationIcon/AppNavigationTomorrowIcon";
+import AppNavigationMonthIcon from "../AppNavigationIcon/AppNavigationMonthIcon";
+import styles from './AppNavigation.module.scss';
 
 const AppNavigation = () => {
     const auth = true;
-   // const showUserTabs = !!auth;
     const navigationItems: AppNavigationItem[] = useMemo(
         () => [
             {
-                linkTo: '/',
+                linkTo: BROWSER_ROUTES.TODAY,
                 Icon: AppNavigationTodayIcon,
                 text: 'Today',
+                matchToLinkEnd: true,
+                display: true,
+            },
+            {
+                linkTo: BROWSER_ROUTES.TOMORROW,
+                Icon: AppNavigationTomorrowIcon,
+                text: 'Tomorrow',
+                matchToLinkEnd: false,
+                display: true,
+            },
+            {
+                linkTo: BROWSER_ROUTES.MONTH,
+                Icon: AppNavigationMonthIcon,
+                text: 'Month',
                 matchToLinkEnd: false,
                 display: true,
             }
@@ -42,28 +58,13 @@ const AppNavigation = () => {
                                         <div className={isActive ? styles.activeWrap : ''}>
                                             <Icon active={isActive} />
                                             <span className={isActive ? styles.activeTab : ''}>
-                        {text}
-                      </span>
+                                                {text}
+                                            </span>
                                         </div>
                                     )}
                                 </NavLink>
                             ),
                     )}
-                    {/*{auth || devAccess ? null : (*/}
-                    {/*    <NavLink*/}
-                    {/*        to='/'*/}
-                    {/*        className={`${styles.navigation_item} ${styles.desktop_only} ${styles.link_btn}`}*/}
-                    {/*    >*/}
-                    {/*        <Button*/}
-                    {/*            name={t('auth.sign_in')}*/}
-                    {/*            size="medium"*/}
-                    {/*            design={GamePriceButtonDesign.primary}*/}
-                    {/*        />*/}
-                    {/*    </NavLink>*/}
-                    {/*)}*/}
-                    {/*<div className={`${styles.desktop_only} ${styles.menu}`}>*/}
-                    {/*    <MenuHamburger />*/}
-                    {/*</div>*/}
                 </nav>
             </div>
         </>
