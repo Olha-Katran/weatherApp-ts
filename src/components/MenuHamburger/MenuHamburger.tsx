@@ -6,8 +6,9 @@ import {
 } from "react-icons/ai";
 import {FaBars} from "react-icons/fa6";
 import {AppNavigationItem} from "../../types/AppNavigationItem";
-import styles from './MenuHamburger.module.scss';
 import LanguageSwitcher from "../LanguageSwither/LanguageSwither";
+import useLanguageSwitch from "../../hooks/useLanguageSwitch";
+import styles from './MenuHamburger.module.scss';
 
 type Props = {
     menuLight?: boolean;
@@ -15,6 +16,7 @@ type Props = {
 
 const MenuHamburger:React.FC<Props> = ({ menuLight }) => {
     const [sidebar, setSidebar] = useState(false);
+    const { language, languageSwitch } = useLanguageSwitch();
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
@@ -82,7 +84,11 @@ const MenuHamburger:React.FC<Props> = ({ menuLight }) => {
                         )}
                         <li>
                             <AiOutlineTransaction className={styles.menu_icon} />
-                            <LanguageSwitcher language={} handleLanguageSelect={}
+                            <LanguageSwitcher
+                                language={language}
+                                handleLanguageSelect={languageSwitch}
+                                isRadioButton={false}
+                            />
                         </li>
                     </ul>
                 </nav>
