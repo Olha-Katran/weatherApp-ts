@@ -1,0 +1,40 @@
+@use '../../assets/base';
+
+.container {
+  padding: 6px 16px 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: base.$color-bg-dark-accent;
+  .open_menu {
+    align-items: center;
+    display: inline-flex;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    order: 1;
+    margin-right: 14px;
+  }
+  .logo {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    margin-right: auto;
+    order: 2;
+    padding: 2px 0 0;
+  }
+
+  .header_search {
+    order: 3;
+
+  }
+  .search_button {
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+  }
+  .search_active {
+    display: none;
+  }
+}

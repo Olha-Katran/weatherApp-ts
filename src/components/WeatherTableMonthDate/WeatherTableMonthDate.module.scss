@@ -1,0 +1,24 @@
+@use '../../assets/base';
+
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: base.$margin-small;
+  .day {
+    color: base.$text-color-dark;
+    font-size: 1rem;
+    font-weight: 550;
+    line-height: 20px;
+    text-transform: capitalize;
+  }
+  .accent {
+    color: base.$text-color-secondary;
+  }
+  .date {
+    color: base.$text-color-grey-date;
+    line-height: 18px;
+  }
+}

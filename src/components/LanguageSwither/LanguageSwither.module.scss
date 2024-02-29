@@ -1,0 +1,64 @@
+@use '../../assets/base';
+
+.empty {
+  &,
+  .item,
+  .custom_radio {
+    all: unset;
+  }
+  .item {
+    cursor: pointer;
+    position: relative;
+    padding: 0 2px;
+    &:first-of-type:after {
+      content: '/';
+      display: inline;
+      padding-left: 3px;
+    }
+  }
+  .custom_radio {
+    &:checked {
+      position: absolute;
+      top: 0;
+      left: 2px;
+      bottom: 0;
+      width: 2ch;
+      border-bottom: 2px solid #414141;
+    }
+  }
+}
+
+
+// no usage
+.layout {
+  font-size: 17px;
+  font-weight: 500;
+  color: #414141;
+  .item {
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: white;
+    border-bottom: 1px solid #727272;
+  }
+  .custom_radio {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 2px solid #9e00ff;
+    &:checked {
+      background-image: radial-gradient(
+      circle at center,
+      #9e00ff 30%,
+      transparent 40%
+      );
+      background-size: 14px 14px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}
