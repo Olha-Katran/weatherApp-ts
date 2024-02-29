@@ -1,10 +1,10 @@
 import React, {useMemo, useState} from 'react';
 import {Link} from "react-router-dom";
-import {
-    AiOutlineClose,
-    AiOutlineHome, AiOutlineTransaction,
-} from "react-icons/ai";
-import {FaBars} from "react-icons/fa6";
+import { AiOutlineClose } from "react-icons/ai";
+import { FaBars } from "react-icons/fa6";
+import { MdTranslate } from "react-icons/md";
+import { LiaMapMarkerAltSolid } from "react-icons/lia";
+import { IoEarthOutline } from "react-icons/io5";
 import {AppNavigationItem} from "../../types/AppNavigationItem";
 import LanguageSwitcher from "../LanguageSwither/LanguageSwither";
 import useLanguageSwitch from "../../hooks/useLanguageSwitch";
@@ -28,22 +28,16 @@ const MenuHamburger:React.FC<Props> = ({ menuLight }) => {
                 linkTo: '/cities',
                 text: 'Погода в Україні',
                 matchToLinkEnd: false,
-                Icon: AiOutlineHome,
+                Icon: LiaMapMarkerAltSolid ,
                 mobileOnly: true,
             },
             {
                 linkTo: '/world',
                 text: 'Погода в світі',
                 matchToLinkEnd: false,
-                Icon: AiOutlineHome,
+                Icon: IoEarthOutline,
                 mobileOnly: true,
-            }, {
-                linkTo: '/lang',
-                text: 'store',
-                matchToLinkEnd: false,
-                Icon: AiOutlineHome,
-                mobileOnly: true,
-            }
+            },
         ], [],
     );
 
@@ -83,7 +77,7 @@ const MenuHamburger:React.FC<Props> = ({ menuLight }) => {
                             )
                         )}
                         <li>
-                            <AiOutlineTransaction className={styles.menu_icon} />
+                            <MdTranslate  className={styles.menu_icon} />
                             <LanguageSwitcher
                                 language={language}
                                 handleLanguageSelect={languageSwitch}
