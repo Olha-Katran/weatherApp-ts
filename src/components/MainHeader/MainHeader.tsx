@@ -1,12 +1,32 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React, {useRef, useState} from 'react';
+import { Link } from "react-router-dom";
 import { ReactComponent as SearchIcon } from '../../assets/header/search-icon.svg';
 import { ReactComponent as SearchHideIcon } from '../../assets/header/header-search-arrow-hide-icon.svg';
 import MenuHamburger from "../MenuHamburger/MenuHamburger";
-import styles from './Header.module.scss';
 import Logo from "../../shared/Logo/Logo";
+import styles from './Header.module.scss';
 
-const HeaderTop = () => {
+type Props = {
+    searchResults?: string[];
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    value: string;
+}
+
+const HeaderTop:React.FC<Props> = ({
+    searchResults,
+    handleChange,
+    value,
+                                   }) => {
+    const searchInputRef = useRef<HTMLInputElement>(null);
+    const [isFocused, setIsFocused] = useState(false);
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if(event.key === 'Enter' || event.key === 'Escape') {
+            setIsFocused(false);
+            searchInputRef.current?.blur();
+        }
+    };
+
     return (
         <header className={styles.container}>
             <MenuHamburger />
@@ -24,12 +44,37 @@ const HeaderTop = () => {
             </div>
 
             <div className={styles.header_search}>
-                <button
-                    className={styles.search_button}
-                    type='button'
-                >
+                <div className={styles.searchField}>
                     <SearchIcon />
-                </button>
+                    <input
+                        ref={searchInputRef}
+                        id='search'
+                        name='search'
+                        type='text'
+                        placeholder='Enter a town'
+                        aria-label='Search'
+                        onFocus={() => setIsFocused(true)}
+                        onBlur={() => setIsFocused(false)}
+                        onKeyDown={handleKeyDown}
+                        onChange={handleChange}
+                        value={value}
+                    />
+                </div>
+
+                <div className={styles.results}>
+                    {searchResults &&
+                        searchResults.map(res => (
+                            <Link
+                                key={res}
+                                to='/'
+                                className={styles.results}
+                            >
+                                {res}
+                            </Link>
+                        ))
+                    }
+                </div>
+                {isFocused && <div className={styles.window_overlay}/>}
             </div>
         </header>
     )

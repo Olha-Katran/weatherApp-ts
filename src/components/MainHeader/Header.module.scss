@@ -1,11 +1,23 @@
 @use '../../assets/base';
 
+@media (max-width: base.$media-desktop-breakpoint) {
+  .window_overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+}
 .container {
   padding: 6px 16px 4px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   background-color: base.$color-bg-dark-accent;
+
   .open_menu {
     align-items: center;
     display: inline-flex;
@@ -27,12 +39,65 @@
 
   .header_search {
     order: 3;
+    .searchField {
+      flex: 2 2 auto;
+      min-width: min-content;
+      height: 2.2em;
+      padding: 8px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 6px;
+      @media (max-width: base.$media-desktop-breakpoint) {
+        background-color: white;
+        color: black;
+        &:focus {
+          background-color: white;
+          color: black;
+        }
+      }
+      @media (min-width: base.$media-desktop-breakpoint) {
+        background-color: hsla(240, 4%, 48%, 0.24);
+        color: hsl(0, 0%, 15%);
+      }
+      img {
+        width: 1em;
+        height: 1em;
+      }
 
-  }
-  .search_button {
-    cursor: pointer;
-    border: none;
-    background-color: inherit;
+      input {
+        background-color: transparent;
+        outline-style: none;
+        border: none;
+        color: inherit;
+        font-size: 1em;
+        font-weight: 400;
+        word-wrap: break-word;
+        font-family: base.$font-family-primary;
+        text-transform: capitalize;
+        width: 120px;
+        flex: 2 2 auto;
+        &::placeholder {
+          color: inherit;
+        }
+      }
+    }
+    .results {
+      background-color: white;
+      @media (max-width: base.$media-desktop-breakpoint) {
+        grid-column: 2/3;
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        padding: 8px;
+        font-size: 1em;
+        color: black;
+        font-family: base.$font-family-primary;
+        line-height: 100%;
+      }
+    }
   }
   .search_active {
     display: none;

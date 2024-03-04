@@ -1,8 +1,8 @@
 import React, {useMemo} from 'react';
 import { NavigationItem } from 'types/NavigationItem';
 import SubHeaderLocation from "../SubHeaderLocation/SubHeaderLocation";
-import styles from './SubHeader.module.scss';
 import NavigationTab from "../NavigationTab/NavigationTab";
+import styles from './SubHeader.module.scss';
 
 const SubHeader = () => {
     const navigationItems: NavigationItem[] = useMemo(
