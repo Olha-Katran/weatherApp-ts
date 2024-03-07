@@ -1,14 +1,17 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {API_BASE_URL, API_ROUTES} from "./routes";
+import {WeatherResponse} from "../../types/Weather";
 
-const api = createApi({
-    reducerPath: 'mainApi',
-    baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
+
+export const weatherApi = createApi({
+    reducerPath: 'weatherApi',
+    baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),
     endpoints: (builder) => ({
-        getUsers: builder.query({
-            query: () => 'users',
+        getWeather: builder.query<WeatherResponse, string>({
+            query: (city) => `${API_ROUTES.WEATHER}?q=${city}&appid=${process.env.REACT_APP_MY_API_KEY}`,
         }),
     }),
-});
+})
 
-export const { useGetUsersQuery } = api;
-export default api;
+export const { useGetWeatherQuery } = weatherApi;
+export default weatherApi;
