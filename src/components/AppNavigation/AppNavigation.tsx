@@ -12,21 +12,21 @@ const AppNavigation = () => {
     const navigationItems: AppNavigationItem[] = useMemo(
         () => [
             {
-                linkTo: BROWSER_ROUTES.TODAY,
+                linkTo: `${BROWSER_ROUTES.MAIN}/${BROWSER_ROUTES.TODAY}`,
                 Icon: AppNavigationTodayIcon,
                 text: 'Today',
                 matchToLinkEnd: true,
                 display: true,
             },
             {
-                linkTo: BROWSER_ROUTES.TOMORROW,
+                linkTo: `${BROWSER_ROUTES.MAIN}/${BROWSER_ROUTES.TOMORROW}`,
                 Icon: AppNavigationTomorrowIcon,
                 text: 'Tomorrow',
                 matchToLinkEnd: false,
                 display: true,
             },
             {
-                linkTo: BROWSER_ROUTES.MONTH,
+                linkTo: `${BROWSER_ROUTES.MAIN}/${BROWSER_ROUTES.MONTH}`,
                 Icon: AppNavigationMonthIcon,
                 text: 'Month',
                 matchToLinkEnd: false,
