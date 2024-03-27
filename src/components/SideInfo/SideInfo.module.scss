@@ -1,0 +1,27 @@
+.side_info {
+  width: 100px;
+  .time_info {
+    height: 79px;
+    .local_time {
+      background-color: #f2f2f2;
+      border-bottom: none;
+      display: flex;
+      font: 11px / 12px sans-serif;
+      padding: 4px 5px 1px;
+      border-radius: 5px 5px 0 0;
+      position: relative;
+      margin-bottom: -5px;
+    }
+    .day_light_sun {
+      border: 1px solid #e6e6e6;
+      border-radius: 5px;
+      padding: 5px 5px 4px;
+      font: 11px / 15px sans-serif;
+      margin-left: 2px;
+      .sun_time {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}

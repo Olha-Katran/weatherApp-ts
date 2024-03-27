@@ -13,7 +13,8 @@ interface Data  {
     accent?: boolean;
 }
 
-const WeatherTable = () => {
+const WeatherTable:React.FC= () => {
+
     const weatherData:Data[] = [
         {
             id: 1,
