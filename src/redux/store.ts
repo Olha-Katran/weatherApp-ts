@@ -1,20 +1,14 @@
 /* eslint-disable import/no-cycle */
 import { configureStore } from '@reduxjs/toolkit';
-import api from "./api/main-api";
-import weatherApi from "./api/main-api";
-import {setupListeners} from "@reduxjs/toolkit/query";
+import { mainApi } from "./api/main-api";
+import bannerSlice from "./api/banner";
+
 
 export const store = configureStore({
     reducer: {
-        [weatherApi.reducerPath]: weatherApi.reducer,
+        [mainApi.reducerPath]: mainApi.reducer,
+        [bannerSlice.name]: bannerSlice.reducer,
     },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(weatherApi.middleware),
+    middleware: mw => mw().concat(mainApi.middleware),
 });
 
-setupListeners(store.dispatch)
-
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-
-export default store;
