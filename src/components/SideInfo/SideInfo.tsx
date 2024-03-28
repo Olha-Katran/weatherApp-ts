@@ -13,17 +13,21 @@ const SideInfo = () => {
                 <div className={styles.local_time_cont}>
                     <div className={styles.local_time}>
                         Current Time
-                        <span>{currentTime}</span>
+                        <span className={styles.time}>{currentTime}</span>
                     </div>
                     <Spacer size={7} backgroundColor='#f2f2f2' />
                 </div>
                 <div className={styles.day_light_sun}>
-                    <div className={styles.sun_time}>Схід<span>05:34</span></div>
-                    <div className={styles.sun_time}>Захід<span>18:40</span></div>
+                    <div className={styles.sun_time}>Схід<span className={styles.time}>05:34</span></div>
+                    <div className={styles.sun_time}>Захід<span className={styles.time}>18:40</span></div>
                 </div>
             </div>
             <div className={styles.forecast_titles}>
-
+                <p>Відчувається</p>
+                <p>Тиск, мм</p>
+                <p>Вологість, %</p>
+                <p>Вітер, м/сек</p>
+                <p>Ймовірність опадів, %</p>
             </div>
         </div>
     )
