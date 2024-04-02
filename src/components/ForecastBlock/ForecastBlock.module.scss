@@ -1,15 +1,5 @@
-.forecast_box {
+.forecast_wrapper {
   height: 194px;
   padding-bottom: 10px;
-  .forecast_block {
-    overflow: hidden;
-    height: 194px;
-    -ms-touch-action: pan-y;
-    .forecast_wrapper {
-      width: 2805px;
-      position: relative;
-      transform: translate(0, 0);
-      color: #000;
-    }
-  }
+  overflow: auto;
 }
