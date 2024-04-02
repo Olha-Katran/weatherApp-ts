@@ -1,0 +1,18 @@
+.forecast_info_container {
+  width: 50px;
+  margin-left: 1px;
+  float: left;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  .additional_info {
+    color: #777;
+    font-size: 14px;
+    padding: 7px 0 4px;
+  }
+}
+
+.forecast_info_container p {
+  padding: 3px 0;
+}

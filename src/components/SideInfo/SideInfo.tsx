@@ -15,7 +15,7 @@ const SideInfo = () => {
                         Current Time
                         <span className={styles.time}>{currentTime}</span>
                     </div>
-                    <Spacer size={7} backgroundColor='#f2f2f2' />
+                    <Spacer size={10} backgroundColor='#f2f2f2' />
                 </div>
                 <div className={styles.day_light_sun}>
                     <div className={styles.sun_time}>Схід<span className={styles.time}>05:34</span></div>
