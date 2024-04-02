@@ -7,13 +7,11 @@ import Logo from "../../shared/Logo/Logo";
 import styles from './Header.module.scss';
 
 type Props = {
-    searchResults?: string[];
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     value: string;
 }
 
 const HeaderTop:React.FC<Props> = ({
-    searchResults,
     handleChange,
     value,
                                    }) => {
@@ -60,21 +58,6 @@ const HeaderTop:React.FC<Props> = ({
                         value={value}
                     />
                 </div>
-
-                <div className={styles.results}>
-                    {searchResults &&
-                        searchResults.map(res => (
-                            <Link
-                                key={res}
-                                to='/'
-                                className={styles.results}
-                            >
-                                {res}
-                            </Link>
-                        ))
-                    }
-                </div>
-                {isFocused && <div className={styles.window_overlay}/>}
             </div>
         </header>
     )

@@ -15,7 +15,7 @@ const AppNavigation = () => {
                 linkTo: `${BROWSER_ROUTES.MAIN}/${BROWSER_ROUTES.TODAY}`,
                 Icon: AppNavigationTodayIcon,
                 text: 'Today',
-                matchToLinkEnd: true,
+                matchToLinkEnd: false,
                 display: true,
             },
             {
@@ -38,20 +38,15 @@ const AppNavigation = () => {
 
     return (
         <>
-            <div className={`${styles.container} ${!auth && styles.unauthorized}`}>
+            <div className={`${styles.container}`}>
                 <nav className={styles.navigation_bar} id="bottombar">
-                    <div className={styles.desktop_only}>
-                        {/*<Logo light={false} />*/}
-                    </div>
                     {navigationItems.map(
                         ({ Icon, linkTo, text, desktopOnly, display, matchToLinkEnd }) =>
                             display && (
                                 <NavLink
                                     key={linkTo}
                                     to={linkTo}
-                                    className={`${styles.navigation_item} ${
-                                        !!desktopOnly && styles.desktop_only
-                                    }`}
+                                    className={`${styles.navigation_item} `}
                                     end={matchToLinkEnd}
                                 >
                                     {({ isActive }) => (
