@@ -11,4 +11,4 @@ const hourlyForecastApi = mainApi.injectEndpoints({
     }),
 })
 
-export const { useGetHourlyForecast } = hourlyForecastApi;
+export const { useGetHourlyForecastQuery } = hourlyForecastApi;

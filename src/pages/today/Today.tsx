@@ -2,19 +2,12 @@ import React from 'react';
 import SubHeader from "../../components/SubHeader/SubHeader";
 import TabsContent from "../../components/TabsContent/TabsContent";
 import {useGetWeatherQuery} from "../../redux/api/weather";
+import {defaultApiOptions} from "../../redux/api/defaultApiOptions";
 
 const temp = 'London';
 
 const Today = () => {
-    const { data: weather, isLoading, error } = useGetWeatherQuery(`${temp}`,
-        {
-            pollingInterval: 60000,
-            refetchOnMountOrArgChange: true,
-            refetchOnFocus: true,
-            refetchOnReconnect: true,
-        }
-
-    )
+    const { data: weather, isLoading, error } = useGetWeatherQuery(`${temp}`, defaultApiOptions)
 
     return (
         <>
