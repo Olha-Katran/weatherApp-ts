@@ -1,7 +1,7 @@
 import {CityData} from "./CityData";
 import {CommonWeatherData} from "./CommonWeatherData";
 
-export interface ListItem extends CommonWeatherData {
+export interface ForecastListItem extends CommonWeatherData {
     pop: number;
     sys: {
         pod: string;
@@ -13,6 +13,6 @@ export interface HourlyForecastResponse {
     cod: string;
     message: string;
     cnt: number;
-    list: ListItem[];
+    list: ForecastListItem[];
     city: CityData;
 }

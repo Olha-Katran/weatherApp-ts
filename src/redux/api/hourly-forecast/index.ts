@@ -6,7 +6,7 @@ import {HourlyForecastResponse} from "../../../types/HourlyForecast";
 const hourlyForecastApi = mainApi.injectEndpoints({
     endpoints: (builder) => ({
         getHourlyForecast: builder.query<HourlyForecastResponse, string>({
-            query: (city) => `${API_ROUTES.FORECAST}?q=${city}&appid=${process.env.REACT_APP_MY_API_KEY}`,
+            query: (city) => `${API_ROUTES.FORECAST}?q=${city}&units=metric&appid=${process.env.REACT_APP_MY_API_KEY}`,
         }),
     }),
 })

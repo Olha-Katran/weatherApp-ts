@@ -1,14 +1,19 @@
 import React from 'react';
-import styles from './ForecastBlock.module.scss';
 import ForecastPhase from "../ForecastPhase/ForecastPhase";
+import { ForecastListItem } from "../../types/HourlyForecast";
+import styles from './ForecastBlock.module.scss';
 
-const tempor = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+type Props = {
+    forecastData: ForecastListItem[];
+}
 
-const ForecastBlock:React.FC = () => {
+const ForecastBlock:React.FC<Props> = ({ forecastData }) => {
     return (
         <div className={styles.forecast_wrapper}>
-            {tempor.map(element => (
-                <ForecastPhase key={element} index={element} />
+            {forecastData.map(data => (
+                <ForecastPhase
+                    key={data.dt}
+                    data={data} />
             ) )}
         </div>
     );
