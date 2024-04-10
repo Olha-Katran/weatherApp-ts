@@ -5,8 +5,6 @@ import styles from './ForecastPhase.module.scss';
 import {formatTemperature} from "../../shared/FormatTemperature/FormatTemperature";
 import {formatPressure} from "../../shared/FormatPressure/FormatPressure";
 import {windDirection} from "../../shared/WindDirection/WindDirection";
-import { MdNorthWest } from "react-icons/md";
-
 
 type Props = {
     data: ForecastListItem;
@@ -28,7 +26,7 @@ const ForecastPhase: React.FC<Props> = ({ data }) => {
                 <WindIcon />
                 <span>{windSpeed}</span>
             </p>
-            <p className={styles.precipitation}>{data.pop}</p>
+            <p className={styles.precipitation}>{data.pop * 100}</p>
         </div>
     )
 };

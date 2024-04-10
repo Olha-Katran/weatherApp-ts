@@ -4,6 +4,7 @@ import TabsContent from "../../components/TabsContent/TabsContent";
 import {useGetWeatherQuery} from "../../redux/api/weather";
 import {defaultApiOptions} from "../../redux/api/defaultApiOptions";
 import {useGetHourlyForecastQuery} from "../../redux/api/hourly-forecast";
+import CurrentLocation from "../../components/CurrentLocation/CurrentLocation";
 
 const temp = 'Lviv';
 
@@ -38,7 +39,13 @@ const Today = () => {
                 ) : isLoading ? (
                     <>Loading....</>
                 ) : hourlyForecast ? (
-                    <TabsContent data={hourlyForecast} />
+                    <>
+                        <CurrentLocation
+                            location={hourlyForecast.city.name}
+                            country={hourlyForecast.city.country}
+                        />
+                        <TabsContent data={hourlyForecast} />
+                    </>
                 ) : null}
 
             </main>
