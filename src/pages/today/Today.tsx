@@ -1,7 +1,6 @@
 import React from 'react';
 import SubHeader from "../../components/SubHeader/SubHeader";
 import TabsContent from "../../components/TabsContent/TabsContent";
-import {useGetWeatherQuery} from "../../redux/api/weather";
 import {defaultApiOptions} from "../../redux/api/defaultApiOptions";
 import {useGetHourlyForecastQuery} from "../../redux/api/hourly-forecast";
 import CurrentLocation from "../../components/CurrentLocation/CurrentLocation";
@@ -9,12 +8,11 @@ import CurrentLocation from "../../components/CurrentLocation/CurrentLocation";
 const temp = 'Lviv';
 
 const Today = () => {
-    //const { data: weather, isLoading, error } = useGetWeatherQuery(`${temp}`, defaultApiOptions);
     const {
         data: hourlyForecast,
         error,
         isLoading
-    } = useGetHourlyForecastQuery(`${temp}`, defaultApiOptions)
+    } = useGetHourlyForecastQuery(temp, defaultApiOptions)
 
 
     return (

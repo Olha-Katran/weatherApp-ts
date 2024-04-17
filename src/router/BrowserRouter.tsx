@@ -8,11 +8,13 @@ import Root from "../pages/Root";
 import Main from "../pages/main/Main";
 import Today from "../pages/today/Today";
 import Month from "../pages/month/Month";
+import CurrentWeather from "../pages/currentWeather/currentWeather";
 
 const BrowserRouter = createBrowserRouter(
     createRoutesFromElements(
         <Route path={PATH.ROOT} element={<Root />}>
             <Route path={PATH.MAIN} element={<Main />}>
+                <Route path={PATH.CURRENT_WEATHER} element={<CurrentWeather />} />
                 <Route path={PATH.TODAY} element={<Today />} />
                 <Route path={PATH.MONTH} element={<Month />} />
                 <Route path={PATH.TOMORROW} element={<h1>Tomorrow</h1>} />

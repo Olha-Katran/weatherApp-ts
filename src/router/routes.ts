@@ -1,6 +1,7 @@
 const BROWSER_ROUTES = {
     ROOT: '/',
     MAIN: 'main',
+    CURRENT_WEATHER: 'current',
     TODAY: 'today',
     TOMORROW: 'tomorrow',
     MONTH: 'month',
