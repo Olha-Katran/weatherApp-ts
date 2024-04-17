@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import {Outlet} from "react-router-dom";
-// import {useDispatch, useSelector} from "react-redux";
 import HeaderTop from "../../components/MainHeader/MainHeader";
 import WeatherFooter from "../../components/WeatherFooter/WeatherFooter";
-// import {setUserInputCity} from "../../redux/search/search";
 
 
 const Main = () => {
@@ -28,7 +26,7 @@ const Main = () => {
             <main>
                 <Outlet />
             </main>
-            <WeatherFooter />
+            {/*<WeatherFooter />*/}
         </div>
     );
 }
