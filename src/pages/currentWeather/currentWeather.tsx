@@ -1,7 +1,7 @@
 import React from 'react';
 import {useGetWeatherQuery} from "../../redux/api/weather";
 import {defaultApiOptions} from "../../redux/api/defaultApiOptions";
-import {countryCodeToFullName} from "../../shared/FormatCountry/FormatCountry";
+import CurrentLocation from "../../components/CurrentLocation/CurrentLocation";
 
 const CurrentWeather = () => {
 
@@ -19,11 +19,7 @@ const CurrentWeather = () => {
                 <>Loading...</>
             ) : weather ? (
                 <>
-                    <div>
-                        {weather.name},
-                        <br />
-                        {countryCodeToFullName(weather.sys.country)}
-                    </div>
+                    <CurrentLocation location={weather.name} country={weather.sys.country} />
                 </>
             ) : null}
         </div>
