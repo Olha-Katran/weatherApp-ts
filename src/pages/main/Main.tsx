@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Outlet} from "react-router-dom";
 import HeaderTop from "../../components/MainHeader/MainHeader";
-import WeatherFooter from "../../components/WeatherFooter/WeatherFooter";
+// import WeatherFooter from "../../components/WeatherFooter/WeatherFooter";
 
 
 const Main = () => {

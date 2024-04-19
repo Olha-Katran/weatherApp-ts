@@ -7,7 +7,7 @@ import {API_ROUTES} from "../routes";
 const weatherApi = mainApi.injectEndpoints({
     endpoints: (builder) => ({
         getWeather: builder.query<WeatherResponse, string>({
-            query: (city) => `${API_ROUTES.WEATHER}?q=${city}&appid=${process.env.REACT_APP_MY_API_KEY}`,
+            query: (city) => `${API_ROUTES.WEATHER}?q=${city}&units=metric&appid=${process.env.REACT_APP_MY_API_KEY}`,
         }),
    }),
 })

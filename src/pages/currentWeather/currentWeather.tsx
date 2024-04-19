@@ -2,6 +2,7 @@ import React from 'react';
 import {useGetWeatherQuery} from "../../redux/api/weather";
 import {defaultApiOptions} from "../../redux/api/defaultApiOptions";
 import CurrentLocation from "../../components/CurrentLocation/CurrentLocation";
+import CurrentWeatherBlock from "../../components/CurrentWeatherBlock/CurrentWeatherBlock";
 
 const CurrentWeather = () => {
 
@@ -9,7 +10,7 @@ const CurrentWeather = () => {
         data: weather,
         isLoading,
         error
-    } = useGetWeatherQuery('Lviv' ,defaultApiOptions);
+    } = useGetWeatherQuery('London' ,defaultApiOptions);
 
     return (
         <div>
@@ -19,7 +20,15 @@ const CurrentWeather = () => {
                 <>Loading...</>
             ) : weather ? (
                 <>
-                    <CurrentLocation location={weather.name} country={weather.sys.country} />
+                    <CurrentLocation
+                        location={weather.name}
+                        country={weather.sys.country}
+                    />
+                    <CurrentWeatherBlock
+                        iconUrl={weather.weather[0].icon}
+                        temperature={weather.main.temp}
+                        description={weather.weather[0].description}
+                    />
                 </>
             ) : null}
         </div>
