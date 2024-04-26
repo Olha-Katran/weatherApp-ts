@@ -1,0 +1,34 @@
+.current_weather_properties {
+  width: 90%;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .weather_info {
+    display: flex;
+    align-items: center;
+    .weather_icon {
+      background-color: white;
+      border-radius: 35%;
+      margin: 0 15px;
+      min-width: 40px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 6px 7px 15px -3px rgba(114, 114, 114, 1);
+    }
+  }
+  .weather_value {
+    margin-right: 25px;
+  }
+
+}
+
+.weather_icon > svg {
+  width: 35px;
+  height: 35px;
+}

@@ -3,6 +3,7 @@ import {useGetWeatherQuery} from "../../redux/api/weather";
 import {defaultApiOptions} from "../../redux/api/defaultApiOptions";
 import CurrentLocation from "../../components/CurrentLocation/CurrentLocation";
 import CurrentWeatherBlock from "../../components/CurrentWeatherBlock/CurrentWeatherBlock";
+import CurrentWeatherPropertiesList from "../../components/CurrentWeatherPropertiesList/CurrentWeatherPropertiesList";
 
 const CurrentWeather = () => {
 
@@ -10,7 +11,7 @@ const CurrentWeather = () => {
         data: weather,
         isLoading,
         error
-    } = useGetWeatherQuery('London' ,defaultApiOptions);
+    } = useGetWeatherQuery('Lviv' ,defaultApiOptions);
 
     return (
         <div>
@@ -27,8 +28,10 @@ const CurrentWeather = () => {
                     <CurrentWeatherBlock
                         iconUrl={weather.weather[0].icon}
                         temperature={weather.main.temp}
-                        description={weather.weather[0].description}
+                        description={weather.weather[0].main}
                     />
+
+                    <CurrentWeatherPropertiesList data={weather}/>
                 </>
             ) : null}
         </div>
