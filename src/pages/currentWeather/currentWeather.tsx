@@ -1,40 +1,48 @@
 import React from 'react';
 import {useGetWeatherQuery} from "../../redux/api/weather";
-import {defaultApiOptions} from "../../redux/api/defaultApiOptions";
+import {useAppSelector} from "../../redux/hooks";
 import CurrentLocation from "../../components/CurrentLocation/CurrentLocation";
 import CurrentWeatherBlock from "../../components/CurrentWeatherBlock/CurrentWeatherBlock";
 import CurrentWeatherPropertiesList from "../../components/CurrentWeatherPropertiesList/CurrentWeatherPropertiesList";
+import SubHeader from "../../components/SubHeader/SubHeader";
+import Places from "../../components/Places/Places";
 
 const CurrentWeather = () => {
+    const selectedCity = useAppSelector((state) => state.cityData);
 
     const {
         data: weather,
         isLoading,
         error
-    } = useGetWeatherQuery('Lviv' ,defaultApiOptions);
+    } = useGetWeatherQuery(selectedCity.coord);
 
     return (
-        <div>
-            {error ? (
-                <>Error</>
-            ) : isLoading ? (
-                <>Loading...</>
-            ) : weather ? (
-                <>
-                    <CurrentLocation
-                        location={weather.name}
-                        country={weather.sys.country}
-                    />
-                    <CurrentWeatherBlock
-                        iconUrl={weather.weather[0].icon}
-                        temperature={weather.main.temp}
-                        description={weather.weather[0].main}
-                    />
+        <>
+            <Places />
+            <div>
+                {error ? (
+                    <>Error</>
+                ) : isLoading ? (
+                    <>Loading...</>
+                ) : weather ? (
+                    <>
+                        <CurrentLocation
+                            location={selectedCity.city.split(',')[0].trim()}
+                            country={weather.sys.country}
+                        />
+                        <CurrentWeatherBlock
+                            iconUrl={weather.weather[0].icon}
+                            temperature={weather.main.temp}
+                            description={weather.weather[0].main}
+                        />
 
-                    <CurrentWeatherPropertiesList data={weather}/>
-                </>
-            ) : null}
-        </div>
+                        <CurrentWeatherPropertiesList data={weather}/>
+                        <SubHeader />
+                    </>
+                ) : null}
+            </div>
+        </>
+
     )
 };
 
