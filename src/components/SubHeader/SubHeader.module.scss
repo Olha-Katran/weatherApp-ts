@@ -1,8 +1,7 @@
 @use '../../assets/base';
 
 .container {
-  background-image: url("../../assets/header/background.jpg");
-  color: base.$text-color-white;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -11,6 +10,7 @@
     min-height: 38px;
     overflow-x: auto;
     padding-top: 6px;
+    color: black;
     padding-left: 20px;
     display: flex;
     align-items: center;

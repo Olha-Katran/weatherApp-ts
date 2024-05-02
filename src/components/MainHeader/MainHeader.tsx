@@ -4,6 +4,7 @@ import { ReactComponent as SearchIcon } from '../../assets/header/search-icon.sv
 import { ReactComponent as SearchHideIcon } from '../../assets/header/header-search-arrow-hide-icon.svg';
 import MenuHamburger from "../MenuHamburger/MenuHamburger";
 import Logo from "../../shared/Logo/Logo";
+import Places from "../Places/Places";
 import styles from './Header.module.scss';
 
 type Props = {
@@ -44,19 +45,20 @@ const HeaderTop:React.FC<Props> = ({
             <div className={styles.header_search}>
                 <div className={styles.searchField}>
                     <SearchIcon />
-                    <input
-                        ref={searchInputRef}
-                        id='search'
-                        name='search'
-                        type='text'
-                        placeholder='Enter a town'
-                        aria-label='Search'
-                        onFocus={() => setIsFocused(true)}
-                        onBlur={() => setIsFocused(false)}
-                        onKeyDown={handleKeyDown}
-                        onChange={handleChange}
-                        value={value}
-                    />
+                    <Places />
+                    {/*<input*/}
+                    {/*    ref={searchInputRef}*/}
+                    {/*    id='search'*/}
+                    {/*    name='search'*/}
+                    {/*    type='text'*/}
+                    {/*    placeholder='Enter a town'*/}
+                    {/*    aria-label='Search'*/}
+                    {/*    onFocus={() => setIsFocused(true)}*/}
+                    {/*    onBlur={() => setIsFocused(false)}*/}
+                    {/*    onKeyDown={handleKeyDown}*/}
+                    {/*    onChange={handleChange}*/}
+                    {/*    value={value}*/}
+                    {/*/>*/}
                 </div>
             </div>
         </header>
