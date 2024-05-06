@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import { Link } from "react-router-dom";
 import { ReactComponent as SearchIcon } from '../../assets/header/search-icon.svg';
-import { ReactComponent as SearchHideIcon } from '../../assets/header/header-search-arrow-hide-icon.svg';
+import { ReactComponent as SearchHideIcon } from '../../assets/header/arrow-to-left-icon.svg';
 import MenuHamburger from "../MenuHamburger/MenuHamburger";
 import Logo from "../../shared/Logo/Logo";
 import Places from "../Places/Places";

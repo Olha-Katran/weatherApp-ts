@@ -18,13 +18,13 @@ const AppNavigation = () => {
                 matchToLinkEnd: false,
                 display: true,
             },
-            {
-                linkTo: `${BROWSER_ROUTES.MAIN}/${BROWSER_ROUTES.TOMORROW}`,
-                Icon: AppNavigationTomorrowIcon,
-                text: 'Tomorrow',
-                matchToLinkEnd: false,
-                display: true,
-            },
+            // {
+            //     linkTo: `${BROWSER_ROUTES.MAIN}/${BROWSER_ROUTES.TOMORROW}`,
+            //     Icon: AppNavigationTomorrowIcon,
+            //     text: 'Tomorrow',
+            //     matchToLinkEnd: false,
+            //     display: true,
+            // },
             {
                 linkTo: `${BROWSER_ROUTES.MAIN}/${BROWSER_ROUTES.MONTH}`,
                 Icon: AppNavigationMonthIcon,
