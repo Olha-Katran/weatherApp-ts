@@ -1,4 +1,6 @@
 .current_weather {
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +8,7 @@
   color: #333333;
   .current_weather_icon {
     width: 200px;
-    height: 200px;
+    height: 180px;
   }
   .current_weather_description {
     display: flex;
@@ -32,7 +34,6 @@
       text-transform: capitalize;
     }
   }
-
 }
 
 .temperature_container > h1 {

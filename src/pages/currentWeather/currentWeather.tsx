@@ -6,6 +6,7 @@ import CurrentWeatherBlock from "../../components/CurrentWeatherBlock/CurrentWea
 import CurrentWeatherPropertiesList from "../../components/CurrentWeatherPropertiesList/CurrentWeatherPropertiesList";
 import SubHeader from "../../components/SubHeader/SubHeader";
 import Places from "../../components/Places/Places";
+import FutureForecastList from "../../components/FutureForecastList/FutureForecastList";
 
 const CurrentWeather = () => {
     const selectedCity = useAppSelector((state) => state.cityData);
@@ -38,6 +39,7 @@ const CurrentWeather = () => {
 
                         <CurrentWeatherPropertiesList data={weather}/>
                         <SubHeader />
+                        <FutureForecastList />
                     </>
                 ) : null}
             </div>

@@ -17,7 +17,7 @@ const Root = () => {
     return (
         <>
             <Outlet />
-            <AppNavigation />
+            {/*<AppNavigation />*/}
         </>
     )
 };
