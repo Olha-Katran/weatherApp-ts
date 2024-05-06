@@ -1,24 +1,36 @@
 /* eslint-disable import/no-cycle */
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {Coord} from "../../types/CityData";
 
-interface CityInputState {
-    userInputCity: string;
+type CityMapData = {
+    coord: Coord;
+    city: string;
 }
 
-const initialState:CityInputState = {
-    userInputCity: "Lviv",
-}
+const initialState:CityMapData = {
+    coord: {
+        lat: 49.842957,
+        lon: 24.031111,
+    },
+    city: "Lviv",
+};
+
+export type CityPayloadAction = CityMapData;
 
 const cityInputSlice = createSlice({
-    name: 'cityInput',
+    name: 'cityData',
     initialState,
     reducers: {
-        setUserInputCity(state, action: PayloadAction<string>) {
-            state.userInputCity = action.payload;
+        setSelectedCity(state, action: PayloadAction<CityPayloadAction>) {
+            state.coord = action.payload.coord;
+            state.city = action.payload.city;
         },
+        resetCityData() {
+            return initialState;
+        }
     },
 });
 
-export const { setUserInputCity } = cityInputSlice.actions;
+export const { setSelectedCity, resetCityData } = cityInputSlice.actions;
 
-export default cityInputSlice.reducer;
+export default cityInputSlice;

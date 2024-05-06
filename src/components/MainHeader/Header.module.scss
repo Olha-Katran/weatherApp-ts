@@ -1,16 +1,5 @@
 @use '../../assets/base';
 
-@media (max-width: base.$media-desktop-breakpoint) {
-  .window_overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    background-color: rgba(255, 255, 255, 0.85);
-  }
-}
 .container {
   padding: 6px 16px 4px;
   display: flex;
@@ -57,10 +46,6 @@
           color: black;
         }
       }
-      @media (min-width: base.$media-desktop-breakpoint) {
-        background-color: hsla(240, 4%, 48%, 0.24);
-        color: hsl(0, 0%, 15%);
-      }
       img {
         width: 1em;
         height: 1em;
@@ -81,21 +66,6 @@
         &::placeholder {
           color: inherit;
         }
-      }
-    }
-    .results {
-      background-color: white;
-      @media (max-width: base.$media-desktop-breakpoint) {
-        grid-column: 2/3;
-      }
-      a {
-        display: block;
-        text-decoration: none;
-        padding: 8px;
-        font-size: 1em;
-        color: black;
-        font-family: base.$font-family-primary;
-        line-height: 100%;
       }
     }
   }

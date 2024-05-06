@@ -1,38 +1,51 @@
 import React from 'react';
 import SubHeader from "../../components/SubHeader/SubHeader";
 import TabsContent from "../../components/TabsContent/TabsContent";
-import {useGetWeatherQuery} from "../../redux/api/weather";
+import {defaultApiOptions} from "../../redux/api/defaultApiOptions";
+import {useGetHourlyForecastQuery} from "../../redux/api/hourly-forecast";
+import CurrentLocation from "../../components/CurrentLocation/CurrentLocation";
 
-const temp = 'London';
+const temp = 'Lviv';
 
 const Today = () => {
-    const { data: weather, isLoading, error } = useGetWeatherQuery(`${temp}`,
-        {
-            pollingInterval: 60000,
-            refetchOnMountOrArgChange: true,
-            refetchOnFocus: true,
-            refetchOnReconnect: true,
-        }
+    const {
+        data: hourlyForecast,
+        error,
+        isLoading
+    } = useGetHourlyForecastQuery(temp, defaultApiOptions)
 
-    )
 
     return (
         <>
             <SubHeader />
             <main>
-                <div>
-                    {error ? (
-                        <>Oh no, there was an error</>
-                    ) : isLoading ? (
-                        <>Loading...</>
-                    ) : weather ? (
-                        <>
-                            <h3>{weather.name}</h3>
-                            <p>Main Weather: {weather.timezone}</p>
-                        </>
-                    ) : null}
-                </div>
-                <TabsContent />
+                {/*<div>*/}
+                {/*    {error ? (*/}
+                {/*        <>Oh no, there was an error</>*/}
+                {/*    ) : isLoading ? (*/}
+                {/*        <>Loading...</>*/}
+                {/*    ) : weather ? (*/}
+                {/*        <>*/}
+                {/*            <h3>{weather.name}</h3>*/}
+                {/*            <p>Main Weather: {weather.timezone}</p>*/}
+                {/*        </>*/}
+                {/*    ) : null}*/}
+                {/*</div>*/}
+
+                {error ? (
+                    <>Oh no, there was an error</>
+                ) : isLoading ? (
+                    <>Loading....</>
+                ) : hourlyForecast ? (
+                    <>
+                        <CurrentLocation
+                            location={hourlyForecast.city.name}
+                            country={hourlyForecast.city.country}
+                        />
+                        <TabsContent data={hourlyForecast} />
+                    </>
+                ) : null}
+
             </main>
         </>
     )
