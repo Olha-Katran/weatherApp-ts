@@ -7,6 +7,9 @@ export interface ForecastListItem extends CommonWeatherData {
         pod: string;
     };
     dt_txt: string;
+    rain: {
+        '3h': number;
+    };
 }
 
 export interface HourlyForecastResponse {
