@@ -1,0 +1,15 @@
+.tomorrow_list_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 15px 25px;
+  .tomorrow_list_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .tomorrow_value {
+      padding-top: 15px;
+    }
+  }
+}
