@@ -1,0 +1,16 @@
+.info_container {
+  padding: 20px 15px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+  .icon_temperature_info {
+    display: flex;
+    align-items: center;
+  }
+}
+.color {
+  background-color: rgba(0, 0, 0, 0);
+}
