@@ -2,6 +2,7 @@ import React, {useMemo} from 'react';
 import { NavigationItem } from 'types/NavigationItem';
 import NavigationTab from "../NavigationTab/NavigationTab";
 import styles from './SubHeader.module.scss';
+import BROWSER_ROUTES from "../../router/routes";
 
 const SubHeader = () => {
     const navigationItems: NavigationItem[] = useMemo(
@@ -22,7 +23,7 @@ const SubHeader = () => {
                 matchToLinkEnd: false,
             },
             {
-                linkTo: '/5_days',
+                linkTo: `/${BROWSER_ROUTES.CURRENT_WEATHER}/${BROWSER_ROUTES.FORECAST}`,
                 text: '5 days',
                 matchToLinkEnd: false,
             },
