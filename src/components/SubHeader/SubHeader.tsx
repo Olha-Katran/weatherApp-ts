@@ -18,11 +18,6 @@ const SubHeader = () => {
                 matchToLinkEnd: false,
             },
             {
-                linkTo: '/3_days',
-                text: '3 days',
-                matchToLinkEnd: false,
-            },
-            {
                 linkTo: `/${BROWSER_ROUTES.CURRENT_WEATHER}/${BROWSER_ROUTES.FORECAST}`,
                 text: '5 days',
                 matchToLinkEnd: false,

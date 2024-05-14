@@ -7,9 +7,11 @@
   line-height: 20px;
   position: relative;
   text-transform: capitalize;
-  display: inline-block;
+  // display: inline-block;
   margin: 0 28px 0 0;
   color: base.$text-color-black;
+  display: flex;
+  align-items: center;
 
 }
 .active_tab {

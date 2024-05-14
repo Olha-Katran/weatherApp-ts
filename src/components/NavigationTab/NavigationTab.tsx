@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import { NavigationItem } from "../../types/NavigationItem";
+import { ReactComponent as ArrowIcon } from '../../assets/header/arrow-to-right-icon.svg';
 import styles from './NavigationTab.module.scss';
 
 const NavigationTab: React.FC<NavigationItem> = ({
@@ -15,6 +16,7 @@ const NavigationTab: React.FC<NavigationItem> = ({
         }
     >
         {text}
+        <ArrowIcon />
     </NavLink>
 );
 
