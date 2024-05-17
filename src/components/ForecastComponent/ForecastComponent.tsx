@@ -1,6 +1,6 @@
 import React from 'react';
 import ReturnButton from "../../shared/ReturnButton/ReturnButton";
-import TomorrowCard from "../TomorrowCard/TomorrowCard";
+// import TomorrowCard from "../TomorrowCard/TomorrowCard";
 import styles from './ForecastComponent.module.scss';
 import {useAppSelector} from "../../redux/hooks";
 import {useGetHourlyForecastQuery} from "../../redux/api/hourly-forecast";
@@ -24,7 +24,7 @@ const ForecastComponent = () => {
             ): forecast ? (
                 <>
                     <ReturnButton name='Next 5 days' />
-                    <TomorrowCard data={forecast}/>
+                    {/*<TomorrowCard data={forecast}/>*/}
                     <ShortForecastList data={forecast} />
                 </>
             ): null}

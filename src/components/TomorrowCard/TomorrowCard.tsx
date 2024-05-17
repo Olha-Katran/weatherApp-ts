@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {HourlyForecastResponse} from "../../types/HourlyForecast";
 import TomorrowList from "../TomorrowList/TomorrowList";
-import ShortWeatherInfoHeader from "../ShortWeatherInfoHeader/ShortWeatherInfoHeader";
+// import ShortWeatherInfoHeader from "../ShortWeatherInfoHeader/ShortWeatherInfoHeader";
 import styles from './TomorrowCard.module.scss';
 
 type Props = {
@@ -9,12 +9,12 @@ type Props = {
 };
 
 const TomorrowCard: React.FC<Props> = ({ data }): JSX.Element | null => {
+    const [showList, setShowList] = useState(false);
     const list = data.list;
     const currentDate = new Date();
 
     const tomorrowDate = new Date();
     tomorrowDate.setDate(currentDate.getDate() + 1);
-
     tomorrowDate.setHours(15, 0,0, 0);
 
     const tomorrowForecast = list.filter((item) => {
@@ -23,7 +23,13 @@ const TomorrowCard: React.FC<Props> = ({ data }): JSX.Element | null => {
             itemDate.getDate() === tomorrowDate.getDate() &&
             itemDate.getHours() === tomorrowDate.getHours()
         );
-    })
+    });
+
+    const toggleList = (): void => {
+        setShowList(!showList);
+    };
+    const hiddenElementClassName = showList ? `${styles.hidden_element} ${styles.show_hidden_element}` : styles.hidden_element;
+
 
     if(tomorrowForecast.length > 0) {
         const temperature = tomorrowForecast[0].main.temp;
@@ -34,13 +40,23 @@ const TomorrowCard: React.FC<Props> = ({ data }): JSX.Element | null => {
 
         return (
             <div className={styles.tomorrow_card_container}>
-                <ShortWeatherInfoHeader
-                    dayOfWeek='Tomorrow'
-                    temp={temperature}
-                    iconUrl={weatherIcon}
-                    color
-                />
-                <TomorrowList wind={wind} humidity={humidity} rain={rain} />
+                {/*<ShortWeatherInfoHeader*/}
+                {/*    dayOfWeek='Tomorrow'*/}
+                {/*    temp={temperature}*/}
+                {/*    iconUrl={weatherIcon}*/}
+                {/*    color*/}
+                {/*    onClick={toggleList}*/}
+                {/*/>*/}
+                {showList && (
+                    <div className={hiddenElementClassName}>
+                        <TomorrowList
+                            wind={wind}
+                            humidity={humidity}
+                            rain={rain}
+                        />
+                    </div>
+
+                )}
             </div>
         )
     } else {

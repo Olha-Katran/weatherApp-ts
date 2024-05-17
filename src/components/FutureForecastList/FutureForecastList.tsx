@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import FutureForecastListItem from "../FutureForecastListItem/FutureForecastListItem";
+import BROWSER_ROUTES from "../../router/routes";
 import { useGetHourlyForecastQuery } from "../../redux/api/hourly-forecast";
 import { useAppSelector } from "../../redux/hooks";
-import styles from './FutureForecastList.module.scss';
 import {NavigationItem} from "../../types/NavigationItem";
-import BROWSER_ROUTES from "../../router/routes";
+import FutureForecastListItem from "../FutureForecastListItem/FutureForecastListItem";
 import NavigationTab from "../NavigationTab/NavigationTab";
+import styles from './FutureForecastList.module.scss';
 
 const FutureForecastList:React.FC = () => {
     const selectedCity = useAppSelector((state) => state.cityData);
@@ -119,14 +119,6 @@ const FutureForecastList:React.FC = () => {
                         >
                             Tomorrow
                         </button>
-                        {/*<button*/}
-                        {/*    type='button'*/}
-                        {/*    className={styles.nav_button}*/}
-                        {/*>*/}
-                        {/*    Next 5 days*/}
-
-                        {/*    <ArrowIcon />*/}
-                        {/*</button>*/}
                         <div className={styles.nav_button}>
                             <NavigationTab
                                 linkTo={navItem.linkTo}

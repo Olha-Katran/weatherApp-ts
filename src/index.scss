@@ -8,7 +8,8 @@
 body {
   height: 100vh;
   font-family: base.$font-family-primary;
-  background-image: base.$gradient-bg-light;
+  background: rgb(240,206,206);
+  background: linear-gradient(to top right, rgba(240,206,206,1) 0%, rgba(230,167,34,1) 100%);
   font-size: 14px;
 }
 header {
