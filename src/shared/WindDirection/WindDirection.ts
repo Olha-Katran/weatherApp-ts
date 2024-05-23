@@ -10,6 +10,7 @@ import {
     MdOutlineEast,
 } from "react-icons/md";
 
+//ToDo: implement wind direction
 
 export const windDirection = (angle: number): IconType => {
     const directions = [

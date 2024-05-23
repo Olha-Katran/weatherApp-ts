@@ -10,7 +10,9 @@ type Props = {
     wind: number;
     humidity: number;
     rain: number;
-}
+};
+
+//ToDo: rename component
 
 const TomorrowList: React.FC<Props> = ({ wind, humidity, rain }) => {
     const tomorrowWeather: CurrentWeather[] = [

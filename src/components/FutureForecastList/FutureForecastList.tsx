@@ -2,12 +2,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import BROWSER_ROUTES from "../../router/routes";
 import { useGetHourlyForecastQuery } from "../../redux/api/hourly-forecast";
 import { useAppSelector } from "../../redux/hooks";
-import {NavigationItem} from "../../types/NavigationItem";
+import { NavigationItem } from "../../types/NavigationItem";
 import FutureForecastListItem from "../FutureForecastListItem/FutureForecastListItem";
 import NavigationTab from "../NavigationTab/NavigationTab";
+import QueryError from "../../shared/QueryError/QueryError";
 import styles from './FutureForecastList.module.scss';
 
-const FutureForecastList:React.FC = () => {
+const FutureForecastList: React.FC = () => {
     const selectedCity = useAppSelector((state) => state.cityData);
     const [tomorrowIndexMidnight, setTomorrowIndexMidnight] = useState<number>(0);
     const [tomorrowIndex, setTomorrowIndex] = useState<number>(0);
@@ -15,38 +16,26 @@ const FutureForecastList:React.FC = () => {
     const [activeTab, setActiveTab] = useState<'today' | 'tomorrow'>('today');
     const [activeIndex, setActiveIndex] = useState<number>(0);
 
-    const {
-        data: forecast,
-        isLoading,
-        error
-    } = useGetHourlyForecastQuery(selectedCity.coord);
+    const { data: forecast, isLoading, error } = useGetHourlyForecastQuery(selectedCity.coord);
 
     useEffect(() => {
         if (forecast) {
-            const tomorrowDate = new Date();
-            tomorrowDate.setDate(tomorrowDate.getDate() + 1);
-            tomorrowDate.setHours(0, 0, 0, 0);
+            const getMidnightTimestamp = (daysAhead: number): number => {
+                const date = new Date();
+                date.setDate(date.getDate() + daysAhead);
+                date.setHours(0, 0, 0, 0);
+                return date.getTime() / 1000;
+            };
 
-            const tomorrowMidnight = tomorrowDate.getTime() / 1000;
+            const tomorrowMidnight = getMidnightTimestamp(1);
+            const dayAfterTomorrowMidnight = getMidnightTimestamp(2);
 
             const indexMidnight = forecast.list.findIndex(el => el.dt >= tomorrowMidnight);
+            const index = forecast.list.findIndex(el => el.dt >= dayAfterTomorrowMidnight);
 
             if (indexMidnight !== -1) {
                 setTomorrowIndexMidnight(indexMidnight);
             }
-        }
-    }, [forecast]);
-
-
-    useEffect(() => {
-        if (forecast) {
-            const tomorrowDate = new Date();
-            tomorrowDate.setDate(tomorrowDate.getDate() + 2);
-            tomorrowDate.setHours(0, 0, 0, 0);
-
-            const tomorrowMidnight = tomorrowDate.getTime() / 1000;
-
-            const index = forecast.list.findIndex(el => el.dt >= tomorrowMidnight);
 
             if (index !== -1) {
                 setTomorrowIndex(index);
@@ -56,53 +45,55 @@ const FutureForecastList:React.FC = () => {
 
     const handleTabClick = (tab: 'today' | 'tomorrow') => {
         setActiveTab(tab);
-        if (tab === 'today') {
-            setActiveIndex(0);
-        } else if(tab === 'tomorrow') {
-            setActiveIndex(tomorrowIndexMidnight);
+        setActiveIndex(tab === 'today' ? 0 : tomorrowIndexMidnight);
+
+        if (forecastListRef.current) {
+            const scrollPosition = tab === 'today' ? 0 : tomorrowIndexMidnight * 85;
+            forecastListRef.current.scrollTo({ left: scrollPosition, behavior: 'smooth' });
         }
     };
 
     const handleScroll = (): void => {
-        if(forecastListRef.current) {
+        if (forecastListRef.current) {
             const scrollLeft = forecastListRef.current.scrollLeft;
-            const listItemWidth = 100;
+            const listItemWidth = 85;
 
             const firstVisibleIndex = Math.floor(scrollLeft / listItemWidth);
 
-            if(firstVisibleIndex === 0) {
+            if (firstVisibleIndex < tomorrowIndexMidnight) {
                 setActiveTab('today');
-            } else if (firstVisibleIndex === tomorrowIndexMidnight) {
+            } else {
                 setActiveTab('tomorrow');
             }
+            setActiveIndex(firstVisibleIndex);
         }
     };
 
     useEffect(() => {
-        if(forecastListRef.current) {
-            forecastListRef.current.addEventListener('scroll', handleScroll);
+        const forecastListElement = forecastListRef.current;
+        if (forecastListElement) {
+            forecastListElement.addEventListener('scroll', handleScroll);
         }
         return () => {
-            if(forecastListRef.current) {
-                forecastListRef.current.removeEventListener('scroll', handleScroll);
+            if (forecastListElement) {
+                forecastListElement.removeEventListener('scroll', handleScroll);
             }
-        }
-    }, [forecastListRef]);
+        };
+    }, []);
 
     const navItem: NavigationItem = {
         linkTo: `/${BROWSER_ROUTES.CURRENT_WEATHER}/${BROWSER_ROUTES.FORECAST}`,
         text: 'Next 5 days',
         matchToLinkEnd: false,
-    }
-
+    };
 
     return (
         <>
             {error ? (
-                <>Error</>
+                <QueryError error={error} />
             ) : isLoading ? (
                 <>Loading...</>
-            ): forecast ? (
+            ) : forecast ? (
                 <>
                     <div className={styles.tabs}>
                         <button
@@ -128,24 +119,21 @@ const FutureForecastList:React.FC = () => {
                         </div>
                     </div>
                     <ul className={styles.forecast_list} ref={forecastListRef}>
-                        {forecast.list.slice(0, tomorrowIndex).map((el, index) => {
-                            return (
-                                <li key={el.dt_txt}>
-                                    <FutureForecastListItem
-                                        dt={el.dt}
-                                        iconUrl={el.weather[0].icon}
-                                        temp={el.main.temp}
-                                        isActive={index === activeIndex}
-                                    />
-                                </li>
-                            );
-                        })}
+                        {forecast.list.slice(0, tomorrowIndex).map((el, index) => (
+                            <li key={el.dt_txt}>
+                                <FutureForecastListItem
+                                    dt={el.dt}
+                                    iconUrl={el.weather[0].icon}
+                                    temp={el.main.temp}
+                                    isActive={index === activeIndex}
+                                />
+                            </li>
+                        ))}
                     </ul>
                 </>
-
-            ): null}
+            ) : null}
         </>
-    )
+    );
 };
 
 export default FutureForecastList;

@@ -1,10 +1,11 @@
 import React from 'react';
-import ReturnButton from "../../shared/ReturnButton/ReturnButton";
-// import TomorrowCard from "../TomorrowCard/TomorrowCard";
-import styles from './ForecastComponent.module.scss';
 import {useAppSelector} from "../../redux/hooks";
 import {useGetHourlyForecastQuery} from "../../redux/api/hourly-forecast";
 import ShortForecastList from "../ShortForecastList/ShortForecastList";
+import Loading from "../Loading/Loading";
+import QueryError from "../../shared/QueryError/QueryError";
+import ReturnButton from "../../shared/ReturnButton/ReturnButton";
+import styles from './ForecastComponent.module.scss';
 
 const ForecastComponent = () => {
     const selectedCity = useAppSelector((state) => state.cityData);
@@ -18,13 +19,12 @@ const ForecastComponent = () => {
     return (
         <div className={styles.forecast_container}>
             {error ? (
-                <>Error</>
+                <QueryError error={error} />
             ) : isLoading ? (
-                <>Loading...</>
+                <Loading  />
             ): forecast ? (
                 <>
                     <ReturnButton name='Next 5 days' />
-                    {/*<TomorrowCard data={forecast}/>*/}
                     <ShortForecastList data={forecast} />
                 </>
             ): null}
