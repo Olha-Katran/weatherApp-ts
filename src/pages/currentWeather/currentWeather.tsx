@@ -4,9 +4,10 @@ import {useAppSelector} from "../../redux/hooks";
 import CurrentLocation from "../../components/CurrentLocation/CurrentLocation";
 import CurrentWeatherBlock from "../../components/CurrentWeatherBlock/CurrentWeatherBlock";
 import CurrentWeatherPropertiesList from "../../components/CurrentWeatherPropertiesList/CurrentWeatherPropertiesList";
-import SubHeader from "../../components/SubHeader/SubHeader";
 import Places from "../../components/Places/Places";
 import FutureForecastList from "../../components/FutureForecastList/FutureForecastList";
+import Loading from "../../components/Loading/Loading";
+import QueryError from "../../shared/QueryError/QueryError";
 
 const CurrentWeather = () => {
     const selectedCity = useAppSelector((state) => state.cityData);
@@ -22,15 +23,16 @@ const CurrentWeather = () => {
             <Places />
             <div>
                 {error ? (
-                    <>Error</>
+                    <QueryError error={error} />
                 ) : isLoading ? (
-                    <>Loading...</>
+                    <Loading />
                 ) : weather ? (
                     <>
                         <CurrentLocation
                             location={selectedCity.city.split(',')[0].trim()}
                             country={weather.sys.country}
                         />
+
                         <CurrentWeatherBlock
                             iconUrl={weather.weather[0].icon}
                             temperature={weather.main.temp}
@@ -38,7 +40,6 @@ const CurrentWeather = () => {
                         />
 
                         <CurrentWeatherPropertiesList data={weather}/>
-                        <SubHeader />
                         <FutureForecastList />
                     </>
                 ) : null}

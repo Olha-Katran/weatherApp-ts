@@ -1,7 +1,46 @@
+@use '../../assets/base';
+
+
 .forecast_list {
   display: flex;
   margin: 20px 0;
   overflow: auto;
   list-style-type: none;
   padding: 0;
+  scroll-snap-type: x mandatory;
+}
+.tabs button {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: base.$text-color-black;
+  background-color: inherit;
+  border: none;
+  white-space: nowrap;
+  position: relative;
+  line-height: 20px;
+  display: inline-block;
+  margin: 0 28px 0 0;
+}
+.tabs {
+  margin-left: 15px;
+  display: flex;
+
+  .nav_button {
+    display: flex;
+
+  }
+  .nav_button svg {
+    margin-left: 10px;
+  }
+  .tab_day {
+
+  }
+  .active {
+    text-decoration-line: underline;
+    text-decoration-skip-ink: none;
+    text-decoration-color: #414141;
+    text-decoration-style: solid;
+    text-decoration-thickness: 2px;
+  }
 }

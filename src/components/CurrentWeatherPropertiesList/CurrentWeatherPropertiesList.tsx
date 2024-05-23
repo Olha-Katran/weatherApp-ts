@@ -12,8 +12,7 @@ import styles from './CurrentWeatherPropertiesList.module.scss';
 
 type Props = {
     data: WeatherResponse;
-}
-
+};
 
 export type CurrentWeather = {
     icon: React.ReactNode;

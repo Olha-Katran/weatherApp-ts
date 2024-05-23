@@ -6,12 +6,13 @@ type Props = {
     dt: number;
     iconUrl: string;
     temp: number;
+    isActive?: boolean;
 }
 
-const FutureForecastListItem:React.FC<Props> = ({dt, temp, iconUrl}) => {
+const FutureForecastListItem:React.FC<Props> = ({dt, temp, iconUrl, isActive = false}) => {
     const time = formatTimestampToTime(dt);
     return (
-        <div className={styles.item_container}>
+        <div className={`${styles.item_container} ${isActive ? styles.active : ''}`}>
             <p>{time}</p>
             <img
                 src={`https://openweathermap.org/img/wn/${iconUrl}@4x.png`}

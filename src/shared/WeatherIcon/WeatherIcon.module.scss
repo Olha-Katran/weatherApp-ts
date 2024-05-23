@@ -1,0 +1,15 @@
+.weather_icon {
+  background-color: white;
+  border-radius: 35%;
+  margin: 0 15px;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 6px 7px 15px -3px rgba(114, 114, 114, 1);
+}
+.weather_icon > svg {
+  width: 35px;
+  height: 35px;
+}
